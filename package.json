@@ -1,0 +1,19 @@
+{
+  "name": "together_frontend",
+  "version": "1.0.0",
+  "description": "This project is for developing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wondermelon4ever/together_frontend.git"
+  },
+  "author": "ispark",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wondermelon4ever/together_frontend/issues"
+  },
+  "homepage": "https://github.com/wondermelon4ever/together_frontend#readme"
+}

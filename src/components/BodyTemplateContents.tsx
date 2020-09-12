@@ -20,7 +20,7 @@ class BodyTemplateComponent extends React.Component<BodyTemplateComponentProps> 
   render() {
     return(
       <div>
-        <div style={{height: "100%", width: '100%' }}>
+        <div style={{height: "100%", width: '100%'}}>
         { this.props.contents }
         </div>
         <div>

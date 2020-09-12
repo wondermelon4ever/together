@@ -45,10 +45,10 @@ class BodyTemplate1Pane extends React.Component<RouteComponentProps<{}, any, Bod
         <SplitPane split="vertical" primary="second" allowResize={false} >
           <Pane size="100%">
             <div style={{ width:'100%', height: '100%'}}>
-            <BodyTemplateContents viewId={ this.state.viewId } contents={ this.state.contents }/>
+              <BodyTemplateContents viewId={ this.state.viewId } contents={ this.state.contents }/>
             </div>
           </Pane>
-        </SplitPane>;
+        </SplitPane>
       </div>
     );
   }

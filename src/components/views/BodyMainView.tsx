@@ -1,17 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
+import { Button, Card, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, ListItemText, Typography } from '@material-ui/core';
+
 import CameraIcon from '@material-ui/icons/PhotoCamera';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -48,30 +41,35 @@ const useStyles = makeStyles((theme) => ({
 const cards = [
   {
     id: 1,
-    title: "Virtual Voucher"
+    title: "Virtual Voucher",
+    viewId: "voucherIssueView"
   }, 
   {
     id: 2,
-    title: "V-Market"
+    title: "V-Market",
+    viewId: "voucherIssueView"
   }, 
   {
     id: 3,
-    title: "Registration"
+    title: "Registration",
+    viewId: "voucherIssueView"
   },
   {
     id: 4,
-    title: "Alliance"
+    title: "Alliance",
+    viewId: "voucherIssueView"
   }, 
   {
     id: 5,
-    title: "Promotion"
+    title: "Promotion",
+    viewId: "voucherIssueView"
   }, 
   {
     id: 6,
-    title: "Payment"
+    title: "Payment",
+    viewId: "voucherIssueView"
   } 
-];
-
+]
 
 export default function BodyMainView() {
   const classes = useStyles();
@@ -91,9 +89,9 @@ export default function BodyMainView() {
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      { card.title }
-                    </Typography>
+                      <Link to={{ pathname: "/tp1", state: { viewId: card.viewId }}}>
+                        <ListItemText primary={ card.title } />
+                      </Link>
                     {/* <Typography>
                       This is a media card. You can use this section to describe the content.
                     </Typography> */}

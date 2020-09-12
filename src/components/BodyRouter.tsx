@@ -26,7 +26,7 @@ class BodyRouter extends React.Component<RouteComponentProps<{}, any>, any> {
 
     render() {
         return(
-            <div style={{height: '100%'}}>
+            <div style={{height: '100%' }}>
                 <Switch>
                     <Route exact path="/tp1">
                         <Redirect path="*" to={{pathname: "/biz1", state: { viewId: viewId }}} />

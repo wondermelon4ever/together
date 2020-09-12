@@ -78,8 +78,8 @@ export default function SignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
+              <Link to={{ pathname: "/tp1", state: { viewId: 'finePasswordView' }}}>
+                <ListItemText primary="Forgot password? Find it" />
               </Link>
             </Grid>
             <Grid item>

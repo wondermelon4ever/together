@@ -4,6 +4,7 @@ import BodyMainView from './views/BodyMainView';
 import ExamplePane1ContentView from './examples/ExamplePane1ContentView';
 import SignIn from './views/common/sign/SignIn';
 import SignUp from './views/common/sign/SignUp';
+import VoucherIssue from './views/voucher/VoucherIssue';
 
 
 const createContentView = (data: any) => {
@@ -27,7 +28,11 @@ const createContentView = (data: any) => {
     case "signUpView":
        return(
          <SignUp />
-       );      
+       ); 
+    case "voucherIssueView":
+      return (
+        <VoucherIssue />
+      );   
     default:
       return null;
   }

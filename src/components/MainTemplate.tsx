@@ -21,7 +21,7 @@ class MainTemplate extends React.Component {
                 <BrowserRouter>
                     <SplitPane split="horizontal">
                         <div style={{height: '60px'}}><Header /></div>
-                        <div style={{height: '835px', overflow: 'scroll'}}><BodyRouter /></div>
+                        <div style={{height: '900px' }}><BodyRouter /></div>
                         <div style={{height: '40px'}}><Footer /></div>
                     </SplitPane>
                 </BrowserRouter>

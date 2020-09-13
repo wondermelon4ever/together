@@ -2,9 +2,10 @@ import React from 'react';
 
 import BodyMainView from './views/BodyMainView';
 import ExamplePane1ContentView from './examples/ExamplePane1ContentView';
-import SignIn from './views/common/sign/SignIn';
-import SignUp from './views/common/sign/SignUp';
-import VoucherIssue from './views/voucher/VoucherIssue';
+import SignInView from './views/common/sign/SignInView';
+import SignUpView from './views/common/sign/SignUpView';
+import VoucherIssueView from './views/voucher/VoucherIssueView';
+import VmarketMainView from './views/vmarket/VmarketMainView';
 
 
 const createContentView = (data: any) => {
@@ -23,15 +24,19 @@ const createContentView = (data: any) => {
       );
     case "signInView":
       return(
-        <SignIn />
+        <SignInView />
       );
     case "signUpView":
        return(
-         <SignUp />
+         <SignUpView />
        ); 
     case "voucherIssueView":
       return (
-        <VoucherIssue />
+        <VoucherIssueView />
+      );   
+    case "vmarketMainView":
+      return (
+        <VmarketMainView />
       );   
     default:
       return null;

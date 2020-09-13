@@ -9,7 +9,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import AddressForm from './AddressForm';
+import VoucherAmountForm from './VoucherAmountForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 
@@ -55,7 +55,7 @@ const steps = ['Amount of voucher', 'Payment details', 'Review your issue'];
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <VoucherAmountForm />;
     case 1:
       return <PaymentForm />;
     case 2:
@@ -65,7 +65,7 @@ function getStepContent(step: number) {
   }
 }
 
-export default function VoucherIssue() {
+export default function VoucherIssueView() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -83,7 +83,7 @@ export default function VoucherIssue() {
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
-            Checkout
+            Voucher Issue
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (

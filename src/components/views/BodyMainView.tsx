@@ -47,7 +47,7 @@ const cards = [
   {
     id: 2,
     title: "V-Market",
-    viewId: "voucherIssueView"
+    viewId: "vmarketMainView"
   }, 
   {
     id: 3,

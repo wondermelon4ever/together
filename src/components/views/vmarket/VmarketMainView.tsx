@@ -7,13 +7,40 @@ import VmarketSalesItemDetailedDialog from './VmarketSalesItemDetailedDialog';
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 
+const salesList = [
+    {
+        id: 1,
+        name: "Selling for store A",
+        type: "Sale",
+        price: 25000,
+        memberId: "Seller A",
+        date: "2020-09-14"
+    },
+    {
+        id: 2,
+        name: "Selling for store B",
+        type: "Sale",
+        price: 23000,
+        memberId: "Seller B",
+        date: "2020-09-14"
+    },
+    {
+        id: 3,
+        name: "Buying for store C",
+        type: "Buying",
+        price: 20000,
+        memberId: "Buyer C",
+        date: "2020-09-14"
+    }
+]
+
 const useStyles = makeStyles((theme) => ({
     layout: {
       width: 'auto',
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(2),
-      [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-        width: 800,
+      [theme.breakpoints.up(1000 + theme.spacing(2) * 2)]: {
+        width: 1000,
         marginLeft: 'auto',
         marginRight: 'auto',
       }
@@ -89,42 +116,28 @@ export default function VmarketMain() {
                         <Grid item xs={12} sm={2} alignContent='center'>
                             <Typography>Date</Typography>
                         </Grid>
-                        <Grid item xs={12} sm={1}>
-                            <Typography>1</Typography>
+                    { salesList.map((salesItem) => (
+                        <Grid container spacing={1}>
+                            <Grid item xs={12} sm={1}>
+                                <Typography>{ salesItem.id }</Typography>
+                            </Grid>
+                            <Grid item xs={12} sm={3}>
+                                <Typography onClick={handleDetailDialogOpen} style={{ cursor: 'pointer'}}>{ salesItem.name}</Typography>
+                            </Grid>
+                            <Grid item xs={12} sm={2}>
+                                <Typography>{ salesItem.type }</Typography>
+                            </Grid>
+                            <Grid item xs={12} sm={2}>
+                                <Typography>{ salesItem.price }</Typography>
+                            </Grid>
+                            <Grid item xs={12} sm={2}>
+                                <Typography>{ salesItem.memberId }</Typography>
+                            </Grid>
+                            <Grid item xs={12} sm={2}>
+                                <Typography>{ salesItem.date }</Typography>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12} sm={3}>
-                            <Typography onClick={handleDetailDialogOpen}>Selling for store A</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={2}>
-                            <Typography>Sell</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={2}>
-                            <Typography>25000</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={2}>
-                            <Typography>Seller A</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={2}>
-                            <Typography>2020-09-14</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={1}>
-                            <Typography>2</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={3}>
-                            <Typography onClick={handleDetailDialogOpen}>Selling for store B</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={2}>
-                            <Typography>Sell</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={2}>
-                            <Typography>25000</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={2}>
-                            <Typography>Seller B</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={2}>
-                            <Typography>2020-09-14</Typography>
-                        </Grid>
+                    ))}
                     </Grid>
                 </Paper>
                 <VmarketSalesItemDetailedDialog selectedValue={selectedValue} open={open} onClose={handleDetailDialogClose} />

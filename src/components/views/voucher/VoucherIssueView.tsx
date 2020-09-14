@@ -118,7 +118,7 @@ export default function VoucherIssueView() {
                     onClick={handleNext}
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'Issue voucher' : 'Next'}
                   </Button>
                 </div>
               </React.Fragment>

@@ -4,9 +4,9 @@ import BodyMainView from './views/BodyMainView';
 import ExamplePane1ContentView from './examples/ExamplePane1ContentView';
 import SignInView from './views/common/sign/SignInView';
 import SignUpView from './views/common/sign/SignUpView';
-import VoucherIssueView from './views/voucher/VoucherIssueView';
 import VmarketMainView from './views/vmarket/VmarketMainView';
-
+import MyVoucherView from './views/voucher/MyVoucherView';
+import VoucherIssueView from './views/voucher/VoucherIssueView';
 
 const createContentView = (data: any) => {
   switch(data.viewId) {
@@ -37,7 +37,11 @@ const createContentView = (data: any) => {
     case "vmarketMainView":
       return (
         <VmarketMainView />
-      );   
+      );
+    case "myVoucherView":
+      return(
+        <MyVoucherView />
+      );
     default:
       return null;
   }

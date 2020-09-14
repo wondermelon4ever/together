@@ -42,32 +42,79 @@ const cards = [
   {
     id: 1,
     title: "Virtual Voucher",
-    viewId: "voucherIssueView"
+    viewId: "voucherIssueView",
+    description: "Virtual voucher menus for members.",
+    subMenus: [
+      {
+        id: '1-1',
+        title: "My voucher",
+        viewId: "myVoucherView"
+      },
+      {
+        id: '1-2',
+        title: "Issue",
+        viewId: "voucherIssueView"
+      },
+      {
+        id: '1-3',
+        title: "History",
+        viewId: "voucherHistoryView"
+      }
+    ]
   }, 
   {
     id: 2,
     title: "V-Market",
-    viewId: "vmarketMainView"
+    viewId: "vmarketMainView",
+    description: "My cart | Issue | Participate | Transaction History",
+    subMenus: [
+     
+    ]
   }, 
   {
     id: 3,
     title: "Registration",
-    viewId: "voucherIssueView"
+    viewId: "voucherIssueView",
+    description: "Registeration for customer or member",
+    subMenus: [
+      {
+        id: '3-1',
+        title: "고객등록",
+        viewId: "myVoucherView"
+      },
+      {
+        id: '3-2',
+        title: "사용자등록",
+        viewId: "myVoucherView"
+      }
+    ]
   },
   {
     id: 4,
     title: "Alliance",
-    viewId: "voucherIssueView"
+    viewId: "voucherIssueView",
+    description: "ddd",
+    subMenus: [
+     
+    ]
   }, 
   {
     id: 5,
     title: "Promotion",
-    viewId: "voucherIssueView"
+    viewId: "voucherIssueView",
+    description: "eee",
+    subMenus: [
+     
+    ]
   }, 
   {
     id: 6,
     title: "Payment",
-    viewId: "voucherIssueView"
+    viewId: "voucherIssueView",
+    description: "fff",
+    subMenus: [
+     
+    ]
   } 
 ]
 
@@ -89,20 +136,21 @@ export default function BodyMainView() {
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                      <Link to={{ pathname: "/tp1", state: { viewId: card.viewId }}}>
-                        <ListItemText primary={ card.title } />
-                      </Link>
-                    {/* <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography> */}
+                    <Link to={{ pathname: "/tp1", state: { viewId: card.viewId }}} style={{textDecoration: 'none'}}>
+                      <ListItemText primary={ card.title } />
+                    </Link>
+                    <Typography>{ card.description }</Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                  {
+                    card.subMenus.map((subItem) => (
+                    <Button key={subItem.id} size="small" color="primary">
+                      <Link to={{ pathname: "/tp1", state: { viewId: subItem.viewId }}} style={{textDecoration: 'none'}}>
+                        <ListItemText primary={ subItem.title }/>
+                      </Link>
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
+                    ))
+                  }
                   </CardActions>
                 </Card>
               </Grid>
@@ -113,5 +161,3 @@ export default function BodyMainView() {
     </React.Fragment>
   );
 }
-
-// export default BodyMainView;

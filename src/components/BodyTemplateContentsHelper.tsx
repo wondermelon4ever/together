@@ -7,6 +7,9 @@ import SignUpView from './views/common/sign/SignUpView';
 import VmarketMainView from './views/vmarket/VmarketMainView';
 import MyVoucherView from './views/voucher/MyVoucherView';
 import VoucherIssueView from './views/voucher/VoucherIssueView';
+import PromotionCreationView from './views/promotion/PromotionCreationView';
+import AnnounceListView from './views/announce/AnnounceListView';
+import PromotionListCarouselView from './views/promotion/PromotionListCarouselView';
 
 const createContentView = (data: any) => {
   switch(data.viewId) {
@@ -41,6 +44,18 @@ const createContentView = (data: any) => {
     case "myVoucherView":
       return(
         <MyVoucherView />
+      );
+    case "promotionIssueView":
+      return(
+        <PromotionCreationView />
+      );
+    case "announceListView":
+      return(
+        <AnnounceListView />
+      );
+    case "promotionListCarouselView":
+      return(
+        <PromotionListCarouselView />
       );
     default:
       return null;

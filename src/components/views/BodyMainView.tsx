@@ -101,17 +101,26 @@ const cards = [
   {
     id: 5,
     title: "Promotion",
-    viewId: "voucherIssueView",
-    description: "eee",
+    viewId: "promotionIssueView",
+    description: "Issue promotion.",
     subMenus: [
-     
+      {
+        id: '5-1',
+        title: "Promotion ad.",
+        viewId: "promotionListCarouselView"
+      },
+      {
+        id: '5-2',
+        title: "My Promotion List",
+        viewId: "promotionListCarouselView"
+      },
     ]
   }, 
   {
     id: 6,
     title: "Payment",
-    viewId: "voucherIssueView",
-    description: "fff",
+    viewId: "announceListView",
+    description: "상품구매 고객의 결재를 위한 메뉴",
     subMenus: [
      
     ]
@@ -136,7 +145,7 @@ export default function BodyMainView() {
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Link to={{ pathname: "/tp1", state: { viewId: card.viewId }}} style={{textDecoration: 'none'}}>
+                    <Link to={{ pathname: "/tp1", state: { viewId: card.viewId }}} style={{ textDecoration: 'none' }}>
                       <ListItemText primary={ card.title } />
                     </Link>
                     <Typography>{ card.description }</Typography>
@@ -155,6 +164,9 @@ export default function BodyMainView() {
                 </Card>
               </Grid>
             ))}
+            <Grid>
+
+            </Grid>
           </Grid>
         </Container>
       </main>

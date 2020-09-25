@@ -5,6 +5,11 @@ import { Avatar, Button, Dialog, DialogTitle, List, ListItem, ListItemAvatar, Li
 import SwipeableTextMobileStepperView from '../common/steps/SwipeableTextMobileStepperView';
 import { LinkType, SwipeableStepInfo, StepDetailedDialogCreator } from '../common/steps/SwipeableTextMobileStepperView';
 
+// import HyperEditor from '../common//hyper-editor/HyperEditorDraftJs';
+// tsx 파일에서 js 파일 불러오는 방법
+// var HyperEditor = require('../common//hyper-editor/HyperEditorCke').default;
+var HyperEditor = require('../common/hyper-editor/HyperEditorFroalaTest.js').default;
+
 const testSteps = [
   {
     label: 'San Francisco – Oakland Bay Bridge, United States',
@@ -77,7 +82,10 @@ class PromotionListCarouselView extends React.Component<PromotionListCarouselVie
 
   render() {
     return(
-      <SwipeableTextMobileStepperView title="Promotion List" steps={ this.state.steps }/>
+      <div>
+        {/* <SwipeableTextMobileStepperView title="Promotion List" steps={ this.state.steps }/> */}
+        <HyperEditor />
+      </div>
     );
   }
 }

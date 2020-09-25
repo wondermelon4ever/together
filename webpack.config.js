@@ -1,5 +1,13 @@
 var webpack = require('webpack');
 
+// const config = {
+//   resolve: {
+//     alias: {
+//       'app': path.resolve(__dirname, 'src/components/views/common/'),
+//     },
+//   },
+// };
+
 module.exports = {
   mode: 'development',
   entry: './src/index.tsx',
@@ -10,7 +18,8 @@ module.exports = {
 
   devtool: "source-map", 
   resolve: {
-    extensions: [".ts", ".tsx", '.js']
+    extensions: [".ts", ".tsx", '.js'],
+    modules: ['node_modules']
   },
   devServer: {
     hot: true,
@@ -22,6 +31,16 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /\.jsx$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+            presets: ['react','es2015', 'stage-2']
+          }
+        }
+      },
       {
         test: /\.js$/,
         loader: 'babel-loader',

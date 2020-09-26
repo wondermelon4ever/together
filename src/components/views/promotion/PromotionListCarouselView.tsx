@@ -1,14 +1,14 @@
 import React from 'react';
 
+import axios from "axios";
+
 import { Avatar, Button, Dialog, DialogTitle, List, ListItem, ListItemAvatar, ListItemText} from '@material-ui/core';
 
 import SwipeableTextMobileStepperView from '../common/steps/SwipeableTextMobileStepperView';
 import { LinkType, SwipeableStepInfo, StepDetailedDialogCreator } from '../common/steps/SwipeableTextMobileStepperView';
 
-// import HyperEditor from '../common//hyper-editor/HyperEditorDraftJs';
 // tsx 파일에서 js 파일 불러오는 방법
-// var HyperEditor = require('../common//hyper-editor/HyperEditorCke').default;
-var HyperEditor = require('../common/hyper-editor/HyperEditorFroalaTest.js').default;
+var HyperViewer = require('../common/hyper-editor/HyperViewerFroala.js').default;
 
 const testSteps = [
   {
@@ -39,11 +39,16 @@ const testSteps = [
 ];
 
 interface PromotionListCarouselViewProps {
-  
+
 }
 
 interface PromotionListCarouselViewState {
-  steps: SwipeableStepInfo[]
+  steps: SwipeableStepInfo[],
+  showViewer: string,
+  open: boolean,
+  promotionId: string,
+  promotionTitle: string,
+  promotionContent: any
 }
 
 class PromotionListCarouselView extends React.Component<PromotionListCarouselViewProps, PromotionListCarouselViewState> {
@@ -68,10 +73,18 @@ class PromotionListCarouselView extends React.Component<PromotionListCarouselVie
     })
 
     this.state = {
-      steps: temp
+      steps: temp,
+      open: false,
+      showViewer: 'none',
+      promotionId: "",
+      promotionTitle: "",
+      promotionContent: undefined
     }
 
     this.createSampleDialog = this.createSampleDialog.bind(this);
+    this.promotionClicked = this.promotionClicked.bind(this);
+    this.onClosePromotionViewer = this.onClosePromotionViewer.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   createSampleDialog = (contentId: string): any => {
@@ -80,11 +93,45 @@ class PromotionListCarouselView extends React.Component<PromotionListCarouselVie
     );
   }
 
+  promotionClicked(promotionId: string) {
+    axios.get("http://localhost:9001/promotion", {
+    }).then(response => {
+      this.setState({
+        showViewer: 'block',
+        open: true,
+        promotionId: promotionId,
+        promotionTitle: promotionId,
+        promotionContent: response.data
+      });
+    }).catch(((error)=>{
+      console.error(error);
+    }));
+  }
+
+  onClosePromotionViewer() {
+    this.setState({
+      showViewer: 'none',
+      open: false
+    })
+  }
+
+  handleClose() {
+
+  }
+
   render() {
     return(
       <div>
-        {/* <SwipeableTextMobileStepperView title="Promotion List" steps={ this.state.steps }/> */}
-        <HyperEditor />
+        <SwipeableTextMobileStepperView title="Promotion List" steps={ this.state.steps } clickEventCallback={ this.promotionClicked }/>
+        {/* <HyperEditor /> */}
+        <Dialog onClose={this.handleClose} aria-labelledby="simple-dialog-title" open={this.state.open}>
+        `<DialogTitle id="simple-dialog-title">{ "Promotion: " + this.state.promotionTitle }</DialogTitle>
+          <HyperViewer
+            title={ this.state.promotionTitle }
+            content={ this.state.promotionContent }
+            show={ this.state.showViewer }
+            onClose={ this.onClosePromotionViewer }/>
+        </Dialog>
       </div>
     );
   }

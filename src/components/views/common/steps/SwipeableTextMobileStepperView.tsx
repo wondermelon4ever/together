@@ -31,7 +31,8 @@ interface StepDetailedDialogCreator {
 
 interface SwipeableStepperProps {
   title: string,
-  steps: SwipeableStepInfo[]
+  steps: SwipeableStepInfo[],
+  clickEventCallback: (id: string) => void
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -86,6 +87,7 @@ const SwipeableTextMobileStepperView = (props: SwipeableStepperProps) => {
     setDialogContents(steps[step].stepDetailedDialogCreator(contentId));
 
     setDialogOpen(true);
+    props.clickEventCallback(steps[step].id);
   }
 
   const onDialogClose = () => {
@@ -129,13 +131,13 @@ const SwipeableTextMobileStepperView = (props: SwipeableStepperProps) => {
           </Button>
         }
       />
-      <SwipeableTextMobileStepDialog 
-        label={ label } 
-        contentId={ contentId } 
-        onClose={ onDialogClose } 
-        open={ dialogOpen } 
+      {/* <SwipeableTextMobileStepDialog
+        label={ label }
+        contentId={ contentId }
+        onClose={ onDialogClose }
+        open={ dialogOpen }
         dialogContents={ dialogContents }
-      />
+      /> */}
     </div>
   );
 }
